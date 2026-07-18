@@ -1,6 +1,15 @@
 # Tienda Matemática
 
-Aplicación de escritorio para aprender porcentajes sin conexión a Internet.
+Aplicación de escritorio para aprender porcentajes de forma interactiva y sin conexión a Internet.
+
+## Descripción
+
+Este proyecto es una aplicación de escritorio construida con Electron que ayuda a los estudiantes a practicar porcentajes. Todos los recursos necesarios están incluidos en la carpeta del proyecto.
+
+## Requisitos
+
+- Node.js instalado
+- npm disponible en el sistema
 
 ## Instalación
 
@@ -17,23 +26,39 @@ npm install
 npm start
 ```
 
-## Empaquetar para Windows
+## Empaquetado para Windows
 
-Para crear el instalador, abre PowerShell como administrador y ejecuta:
+Para generar el instalador o el directorio de distribución, ejecuta:
 
 ```bash
 npm run dist
 ```
 
-Si el empaquetado falla por permisos de firma de Windows, puedes usar:
+El resultado se guardará en la carpeta `dist`.
+
+Si solo deseas crear los archivos de aplicación sin instalador, usa:
 
 ```bash
 npm run pack
 ```
 
-## Recursos incluidos
+## Estructura del proyecto
 
-- `image.png` como logo de la aplicación
-- `fondo de musica.mp3` para reproducción de audio en bucle después de la primera interacción
+- `index.html`: Interfaz principal
+- `styles.css`: Estilos de la aplicación
+- `script.js`: Lógica del juego
+- `main.js`: Entrada de Electron
+- `preload.js`: Comunicación entre renderer y main
+- `image.png`: Icono del proyecto
+- `fondo de musica.mp3`: Fondo musical opcional
 
-La aplicación usa solo archivos locales (`index.html`, `styles.css`, `script.js`) y puede funcionar sin conexión a Internet.
+## Repositorio
+
+Repositorio remoto:
+
+https://github.com/nasa-cell/porcentaje-juego-educativo-
+
+## Notas
+
+- La aplicación está diseñada para funcionar sin conexión una vez instaladas las dependencias.
+- Si tienes problemas con el empaquetado, revisa que `electron-builder` y `electron` estén instalados correctamente.
