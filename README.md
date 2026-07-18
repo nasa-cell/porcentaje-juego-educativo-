@@ -42,6 +42,14 @@ Si solo deseas crear los archivos de aplicación sin instalador, usa:
 npm run pack
 ```
 
+## Descarga directa del instalador
+
+Si no puedes ejecutar el proyecto con `npm`, descarga directamente el instalador para PC desde este enlace:
+
+https://drive.google.com/file/d/1GcGtb-mG0GwlAXcSJKfjrxuQ-nU9mxju/view?usp=drive_link
+
+Descarga el archivo y ejecútalo para instalar la aplicación en tu equipo.
+
 ## Estructura del proyecto
 
 - `index.html`: Interfaz principal
