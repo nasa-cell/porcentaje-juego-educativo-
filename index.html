@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Matemática - Porcentajes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <img id="app-logo" src="image.png" alt="Logo Tienda Matemática">
+        
+        <!-- PANTALLA 1: LOGIN -->
+        <div id="screen-login" class="screen active">
+            <h1>🛒 TIENDA MATEMÁTICA</h1>
+            <p class="subtitle">Aprende porcentajes comprando productos</p>
+            
+            <div class="form-group">
+                <label for="username">👤 Nombre del estudiante:</label>
+                <input type="text" id="username" placeholder="Escribe tu nombre aquí..." autocomplete="off">
+                <div id="login-error" class="error-msg"></div>
+            </div>
+
+            <button class="btn" id="btn-login">Ingresar</button>
+        </div>
+
+        <!-- PANTALLA 2: SELECCIÓN DE DIFICULTAD -->
+        <div id="screen-difficulty" class="screen">
+            <h2>Selecciona dificultad</h2>
+            
+            <div class="diff-container">
+                <div class="diff-card easy" data-level="easy">
+                    <h3>🟢 Fácil</h3>
+                    <p>Descuentos: 5%, 10%, 20%</p>
+                    <p>Productos con precios pequeños.</p>
+                </div>
+                <div class="diff-card medium" data-level="medium">
+                    <h3>🟡 Medio</h3>
+                    <p>Descuentos: 15%, 25%, 30%</p>
+                    <p>Precios variados.</p>
+                </div>
+                <div class="diff-card hard" data-level="hard">
+                    <h3>🔴 Difícil</h3>
+                    <p>Descuentos: 40%, 50%</p>
+                    <p>Precios mayores.</p>
+                </div>
+            </div>
+
+            <button class="btn" id="btn-start">Empezar juego</button>
+        </div>
+
+        <!-- PANTALLA 3: JUEGO ACTIVO -->
+        <div id="screen-game" class="screen">
+            <!-- Dashboard Superior -->
+            <div class="dashboard">
+                <div class="dash-item">👤 <span id="dash-user">---</span></div>
+                <div class="dash-item">🎯 <span id="dash-diff">---</span></div>
+                <div class="dash-item">📘 <span id="dash-progress">1/30</span></div>
+                <div class="dash-item">✅ Aciertos: <span id="dash-corrects">0</span></div>
+                <div class="dash-item">❌ Fallas: <span id="dash-errors">0</span></div>
+                <div class="dash-item">🔥 Racha: <span id="dash-streak">0</span></div>
+            </div>
+
+            <!-- Barra de Progreso General (30 Ejercicios) -->
+            <div class="progress-container">
+                <div id="game-progress-bar" class="progress-bar"></div>
+            </div>
+
+            <!-- Tarjeta del Producto Ofertado -->
+            <div class="product-card">
+                <div id="prod-emoji" class="product-emoji">🎒</div>
+                <div id="prod-name" class="product-name">Mochila</div>
+                <div class="product-details">
+                    <span class="p-price">💰 Precio: S/<span id="prod-price">80</span></span>
+                    <span class="p-discount">🏷️ Descuento: <span id="prod-discount">25</span>%</span>
+                </div>
+            </div>
+
+            <!-- Contenedor del Sistema Guiado Paso a Paso -->
+            <div class="steps-container">
+                <div id="step-summary" class="step-summary">Paso 1/4 · Operación: multiplicación</div>
+                
+                <!-- PASO 1: MULTIPLICACIÓN -->
+                <div id="step-1" class="step-block active">
+                    <div class="step-title">Paso 1: Elige la multiplicación correcta para calcular el descuento</div>
+                    <div class="step-subtitle">Operación: multiplicación. Todas las opciones son multiplicaciones.</div>
+                    <div class="options-row" id="options-s1"></div>
+                </div>
+
+                <!-- PASO 2: DIVISIÓN -->
+                <div id="step-2" class="step-block">
+                    <div class="step-title">Paso 2: Elige la división correcta para obtener el descuento</div>
+                    <div class="step-subtitle">Operación: división. Todas las opciones son divisiones.</div>
+                    <div class="options-row" id="options-s2"></div>
+                </div>
+
+                <!-- PASO 3: RESPUESTA DEL DESCUENTO -->
+                <div id="step-3" class="step-block">
+                    <div class="step-title">Paso 3: Elige cuánto dinero se descontará</div>
+                    <div class="step-subtitle">Selecciona el valor correcto del descuento en soles.</div>
+                    <div class="options-row" id="options-s3"></div>
+                </div>
+
+                <!-- PASO 4: PRECIO FINAL -->
+                <div id="step-4" class="step-block">
+                    <div class="step-title">Paso 4: Elige la operación correcta para saber el precio final</div>
+                    <div class="step-subtitle">Operación: resta. Todas las opciones son operaciones de resta.</div>
+                    <div class="options-row" id="options-s4"></div>
+                </div>
+
+                <!-- Feedback Global por paso -->
+                <div id="step-feedback" class="feedback"></div>
+                <!-- Box del Precio Final Exitoso -->
+                <div id="final-price-box" class="final-price-box">🛒 Precio final: S/<span id="final-price-val">0</span></div>
+            </div>
+        </div>
+
+        <!-- PANTALLA 4: RESULTADOS FINALES -->
+        <div id="screen-results" class="screen">
+            <h1>🎉 ¡Felicidades!</h1>
+            <p class="subtitle">Has completado tus compras en la Tienda Matemática</p>
+
+            <div class="medal-box">
+                <div id="res-medal-icon" class="medal-icon">🥇</div>
+                <div id="res-medal-name" class="medal-name">Medalla de Oro</div>
+            </div>
+
+            <div id="res-final-msg" class="final-message">Terminaste el juego. Aquí están tus resultados finales:</div>
+
+            <div class="results-summary-row">
+                <div id="results-wait-note" class="results-wait">⌛ Calculando resultados... espera 5 segundos.</div>
+                <div class="results-grid">
+                    <div class="res-item">👤 Nombre: <span id="res-name">---</span></div>
+                    <div class="res-item">🎯 Dificultad: <span id="res-diff">---</span></div>
+                    <div class="res-item">✅ Aciertos: <span id="res-accur">0</span></div>
+                    <div class="res-item">❌ Fallas: <span id="res-errors">0</span></div>
+                    <div class="res-item">🔥 Racha máxima: <span id="res-max-streak">0</span></div>
+                </div>
+            </div>
+
+            <div class="results-actions">
+                <button class="btn" id="btn-replay">Volver a jugar</button>
+                <button class="btn" id="btn-exit" style="background-color: #c0392b;">Salir aplicación</button>
+            </div>
+        </div>
+
+    </div>
+    <audio id="bg-music" src="fondo de musica.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>

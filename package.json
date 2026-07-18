@@ -1,0 +1,38 @@
+{
+  "name": "tienda-matematica",
+  "productName": "Tienda Matemática",
+  "version": "1.0.1",
+  "description": "Aplicación de escritorio para aprender porcentajes sin conexión a Internet.",
+  "main": "main.js",
+  "author": "Baris",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "icon": "image.png",
+    "appId": "com.tienda.matematica",
+    "productName": "Tienda Matemática",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "image.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^24.8.0"
+  }
+}
